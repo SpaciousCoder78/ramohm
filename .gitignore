@@ -1,1 +1,15 @@
 build
+src/main.exe
+src/main.o
+src/main.obj
+src/main.plk
+src/main.pdb
+src/vc140.pdb
+main.exe
+main.o
+main.obj
+main.plk
+main.pdb
+vc140.pdb
+main.ilk
+```
