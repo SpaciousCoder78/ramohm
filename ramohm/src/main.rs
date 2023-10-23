@@ -1,6 +1,8 @@
 //importing libraries
 use std::io;
 
+mod formulae;
+
 //main function
 fn main() {
     //calling menu function
@@ -23,8 +25,17 @@ fn menu(){
     let mut choice = String::new();
     //reading input from user
     io::stdin().read_line(&mut choice).expect("Failed to read input");
-    let numchoice:i32 = choice.trim().parse();
-
+    //parsing the inputted string into int32
+    let numchoice:i32 = match choice.trim().parse(){
+        //assign the integer type if the test is ok
+        Ok(parsed) => parsed,
+        //if theres an error, do this
+        Err(_) => {
+        //returning 0 in case of error
+        0
+   }
+    };
+    //match statement to guide the user to the selected function
     match numchoice{
         1 => calcresistance(),
         2 => calccurrent(),
@@ -36,8 +47,46 @@ fn menu(){
     }
 
 }
-fn calcresistance(){
-    println!("test");
+
+//resistance calculator function
+pub fn calcresistance(){
+    println!("----------------------Resistance------------------");
+    println!("Enter the number of resistors: ");
+    //creating variable string
+    let mut _noofres = String::new();
+    //input
+    io::stdin().read_line(&mut _noofres).expect("Failed to read input");
+    //parsing
+    let _noofres:i32 = match _noofres.trim().parse(){
+        Ok(parse)=>parse,
+        Err(_)=>{
+            0
+        }
+    };
+    //asking if the resistors are in series or parallel
+    println!("Choose if the resistors are in series or parallel: ");
+    println!("1.Series");
+    println!("2.Parallel");
+    println!("Enter your choice: ");
+    //creating variable string
+    let mut reschoice = String::new();
+    //input
+    io::stdin().read_line(&mut reschoice).expect("Failed to read input");
+    //parsing to int32
+    let reschoice:i32 = match reschoice.trim().parse(){
+        Ok(parse)=>parse,
+        Err(_)=>{
+            0
+        }
+    };
+    //taking the user to the specified function based on their choice
+    match reschoice{
+        1=>formulae::resistanceinseries(_noofres),
+        2=>formulae::resistanceinparallel(_noofres),
+        _=>println!("invalid choice"),
+    }
+
+
 }
 fn calccurrent(){
 
