@@ -1,7 +1,7 @@
 //importing libraries
 use std::io;
 
-mod formulae;
+pub mod formulae;
 
 //main function
 fn main() {
@@ -9,7 +9,7 @@ fn main() {
     menu();
 }
 //menu function
-fn menu(){
+pub fn menu(){
     //menu function menu
     println!("------------------------RamOhm--------------------------");
     println!("------------------------v1.0-----------------------------");
